@@ -5,6 +5,8 @@ A leaderboard solution for a game Inertial Drift to provide users with their ran
 Problem
 Games and other applications which have a competitive element to them often rely on leaderboard functionality to display a users rank versus other users in the system.
 Many generic leaderboard solutions exist but don't offer the flexibility and additional features required for Inertial Drift to provide the user with relevant statistics.
+
+## Features
 We will create a leaderboard that contains this set of features:
 - Ranking
   - Locality
