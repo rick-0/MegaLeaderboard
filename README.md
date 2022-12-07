@@ -12,12 +12,19 @@ We will create a leaderboard that contains this set of features:
   - Regional
   - Track
   - Car
+- Ability to check a users rank across multiple boards in one request
+- Filter rankings by platform (playstation/xbox/steam/etc)
+- Community challenge generation
+	- Endpoint to generate the challenege based on set of parameters (Track?, Car?, Gamemode?)
+- Friend challenges
+	- Create a challenge, similar to community challenge but only friends can do it
 - Ghost Storage
 - Storage for additional metrics
   - Aggregate Metrics (Time spent drifting, number of tracks raced etc)
   - ???
+- Authentication that can work with each of the platforms token services (If possible, need to research)
 
-It must return users results with a low response time and should cost less that X per month (???)
+It must return users results with a response time lower than 10 seconds at the most and should cost less that X per month (???)
 
 ## Dictionary of Terms
 Track - A race track that the users will race on and record a completion time.
@@ -28,8 +35,8 @@ Ghost - The positional and chronological recording of a user's race on a specifi
 
 Ranking - A user's race time (or other metric) specific to one track, compared with those of others users.
 
-Locality Ranking - The rankings of other users either side of the ranking of a user.
+Locality Ranking - The rankings of other users close to the ranking of that user.
 
-Friend Ranking - The rankings of a user's friends relative to their own ranking.
+Friend Ranking - The rankings of a user's friends relative to the ranking of that user.
 
 Regional Ranking - The ranking of other users in the same regional area as that user.
