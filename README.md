@@ -68,3 +68,16 @@ erDiagram
     Platform ||--|| Ranking : ""
 
 ```
+
+## Entity-Relationship Diagram
+``` mermaid
+erDiagram
+    User ||--|{ Player : ""
+    Player ||--|{ Race : ""
+    Platform ||--|| Player : ""
+    PlayerFriend }|--|{ Player : ""
+    Ghost ||--|| Race : ""
+    Ghost ||--|| Car : ""
+    Ghost ||--|| Track : ""
+    Leaderboard ||--|{ Race : ""   
+```
