@@ -30,7 +30,6 @@ When a player completes a track, their race ghost will be uploaded to the API wh
 - Ability to check a users rank across multiple boards in one request
 - Filter rankings by platform (playstation/xbox/steam/etc)
 - Ghost Storage
-- Authentication that can work with each of the platforms token services (If possible, need to research)
 
 ## Stretch
 
