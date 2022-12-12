@@ -56,3 +56,12 @@ Friend Ranking - The rankings of a user's friends relative to the ranking of tha
 Regional Ranking - The ranking of other users in the same regional area as that user.
   
 ## Domain Model
+erDiagram
+    Ranking ||--|| Leaderboard : ""
+    Ghost ||--|| Ranking : ""
+    Player ||--|| Ranking : ""
+    Friend ||--|| Player : ""
+    Challenge ||--|| Leaderboard : ""
+    Car ||--|| Ghost : ""
+    Track ||--|| Ghost : ""
+    Platform ||--|| Ranking : ""
