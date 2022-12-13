@@ -72,7 +72,7 @@ erDiagram
 
 ## Entity-Relationship Diagram
 ``` mermaid
-%%{init: {'themeVariables': { 'darkMode': true }}}%%
+%%{init: {'theme':'neutral'}}%%
 erDiagram
     User ||--|{ Player : ""
     Player ||--|{ Race : ""
