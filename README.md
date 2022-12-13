@@ -57,6 +57,7 @@ Regional Ranking - The ranking of other users in the same regional area as that 
   
 ## Domain Model
 ``` mermaid
+%%{init: {'theme':'neutral'}}%%
 erDiagram
     Ranking ||--|| Leaderboard : ""
     Ghost ||--|| Ranking : ""
