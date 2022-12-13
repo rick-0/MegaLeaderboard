@@ -72,13 +72,14 @@ erDiagram
 
 ## Entity-Relationship Diagram
 ``` mermaid
-%%{init: {'theme':'neutral'}}%%
+%%{init: {'themeVariables': { 'darkMode': true }}}%%
 erDiagram
     User ||--|{ Player : ""
     Player ||--|{ Race : ""
     Platform ||--|| Player : ""
     PlayerFriend }o--|{ Player : ""
     Ghost ||--|| Race : ""
+    Race ||--|| RaceDetail : ""
     Ghost ||--|| Car : ""
     Ghost ||--|| Track : ""
     Leaderboard ||--|{ Race : ""   
@@ -90,9 +91,11 @@ erDiagram
         serial id PK
         serial user_id FK
         serial platform_id FK
+        text display_name
     }
     Platform {
         serial id PK
+        text name
     }
     PlayerFriend {
         serial id PK
@@ -102,6 +105,12 @@ erDiagram
         serial id PK
         serial car_id FK
         serial track_id FK
+        UUID ghost_storage_id
+    }
+    RaceDetail {
+        serial id PK
+        decimal time_elapsed
+        decimal score
     }
     Race {
         serial id PK
@@ -110,12 +119,15 @@ erDiagram
     }
     Car {
         serial id PK
+        text name
     }
     Track {
         serial id PK
+        text name
     }
     Leaderboard {
         serial id PK
+        text name
         int type
     }
 ```
