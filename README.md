@@ -100,12 +100,13 @@ erDiagram
     PlayerFriend {
         serial id PK
         serial player_id FK
+        serial player_friend_id FK "FK with Player"
     }
     Ghost {
         serial id PK
         serial car_id FK
         serial track_id FK
-        UUID ghost_storage_id
+        UUID ghost_storage_id "ID the ghost is stored under"
     }
     RaceDetail {
         serial id PK
