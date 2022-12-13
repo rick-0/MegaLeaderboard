@@ -75,9 +75,45 @@ erDiagram
     User ||--|{ Player : ""
     Player ||--|{ Race : ""
     Platform ||--|| Player : ""
-    PlayerFriend }|--|{ Player : ""
+    PlayerFriend }o--|{ Player : ""
     Ghost ||--|| Race : ""
     Ghost ||--|| Car : ""
     Ghost ||--|| Track : ""
     Leaderboard ||--|{ Race : ""   
+
+    User {
+        serial id PK
+    }
+    Player {
+        serial id PK
+        serial user_id FK
+        serial platform_id FK
+    }
+    Platform {
+        serial id PK
+    }
+    PlayerFriend {
+        serial id PK
+        serial player_id FK
+    }
+    Ghost {
+        serial id PK
+        serial car_id FK
+        serial track_id FK
+    }
+    Race {
+        serial id PK
+        serial leaderboard_id FK
+        serial player_id FK
+    }
+    Car {
+        serial id PK
+    }
+    Track {
+        serial id PK
+    }
+    Leaderboard {
+        serial id PK
+        int type
+    }
 ```
