@@ -77,35 +77,43 @@ erDiagram
     User ||--|{ Player : ""
     Player ||--|{ Race : ""
     Platform ||--|| Player : ""
-    PlayerFriend }o--|{ Player : ""
+    PlayerFriend }o--|| Player : ""
+    PlayerFriendGroup |o--|| Player : ""
+    PlayerFriend }|--|| PlayerFriendGroup : ""
     Ghost ||--|| Race : ""
     Race ||--|| RaceDetail : ""
     Ghost ||--|| Car : ""
     Ghost ||--|| Track : ""
-    Leaderboard ||--|{ Race : ""   
+    Leaderboard ||--|{ Race : ""
+    Leaderboard ||--o| Challenge : ""
 
     User {
         serial id PK
     }
     Player {
         serial id PK
-        serial user_id FK
-        serial platform_id FK
+        int user_id FK
+        int platform_id FK
+        int friend_group_id FK
         text display_name
+	    int region
     }
     Platform {
         serial id PK
         text name
     }
+    PlayerFriendGroup {
+        serial id PK
+    }
     PlayerFriend {
         serial id PK
-        serial player_id FK
-        serial player_friend_id FK "FK with Player"
+        int player_id FK
+        int friend_group_id FK
     }
     Ghost {
         serial id PK
-        serial car_id FK
-        serial track_id FK
+        int car_id FK
+        int track_id FK
         UUID ghost_storage_id "ID the ghost is stored under"
     }
     RaceDetail {
@@ -115,8 +123,9 @@ erDiagram
     }
     Race {
         serial id PK
-        serial leaderboard_id FK
-        serial player_id FK
+        int race_detail_id FK
+        int leaderboard_id FK
+        int player_id FK
     }
     Car {
         serial id PK
@@ -128,7 +137,15 @@ erDiagram
     }
     Leaderboard {
         serial id PK
+        int challenge_id FK
         text name
         int type
+    }
+    Challenge {
+        serial id PK
+        text name
+        int type
+        timestamp start_date
+        timestamp end_date
     }
 ```
