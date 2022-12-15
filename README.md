@@ -77,7 +77,7 @@ erDiagram
     User ||--|{ Player : ""
     Player ||--|{ Race : ""
     Platform ||--|| Player : ""
-    PlayerFriend }o--|| Player : ""
+    PlayerFriend ||--|{ Player : ""
     PlayerFriendGroup |o--|| Player : ""
     PlayerFriend }|--|| PlayerFriendGroup : ""
     Ghost ||--|| Race : ""
