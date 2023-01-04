@@ -74,12 +74,10 @@ erDiagram
 ``` mermaid
 %%{init: {'theme':'neutral'}}%%
 erDiagram
-    User ||--|{ Player : ""
-    Player ||--|{ Race : ""
-    Platform ||--|| Player : ""
+    PlayerPlatform ||--|| Player : ""
+    Platform ||--|| PlayerPlatform : ""
     PlayerFriend ||--|{ Player : ""
-    PlayerFriendGroup |o--|| Player : ""
-    PlayerFriend }|--|| PlayerFriendGroup : ""
+    Player ||--|{ Race : ""
     Ghost ||--|| Race : ""
     Race ||--|| RaceDetail : ""
     Ghost ||--|| Car : ""
@@ -87,28 +85,24 @@ erDiagram
     Leaderboard ||--|{ Race : ""
     Leaderboard ||--o| Challenge : ""
 
-    User {
-        serial id PK
-    }
     Player {
         serial id PK
-        int user_id FK
-        int platform_id FK
-        int friend_group_id FK
         text display_name
 	    int region
+    }
+    PlayerPlatform {
+        text user_id PK
+        int platform_id PK
+        int player_id FK
     }
     Platform {
         serial id PK
         text name
     }
-    PlayerFriendGroup {
-        serial id PK
-    }
     PlayerFriend {
         serial id PK
         int player_id FK
-        int friend_group_id FK
+        int friend_friend_id FK
     }
     Ghost {
         serial id PK
