@@ -74,52 +74,65 @@ erDiagram
 ``` mermaid
 %%{init: {'theme':'neutral'}}%%
 erDiagram
-    PlayerPlatform ||--|| Player : ""
-    Platform ||--|| PlayerPlatform : ""
-    PlayerFriend ||--|{ Player : ""
+    PlatformSteamPlayer ||--|| Player : ""
+    PlatformXboxPlayer ||--|| Player : ""
+    PlatformPlaystationPlayer ||--|| Player : ""
+    PlatformSwitchPlayer ||--|| Player : ""
+    PlatformEpicPlayer ||--|| Player : ""
+    PlatformPlayerFriend ||--|{ Player : ""
     Player ||--|{ Race : ""
     Ghost ||--|| Race : ""
-    Race ||--|| RaceDetail : ""
-    Ghost ||--|| Car : ""
-    Ghost ||--|| Track : ""
-    Leaderboard ||--|{ Race : ""
-    Leaderboard ||--o| Challenge : ""
+    Race ||--|| RaceDetailTime : ""
+    Race }|--|| Car : ""
+    Race }|--|| Track : ""
 
     Player {
         serial id PK
-        text display_name
-	    int region
     }
-    PlayerPlatform {
-        text user_id PK
-        int platform_id PK
-        int player_id FK
-    }
-    Platform {
-        serial id PK
-        text name
-    }
-    PlayerFriend {
-        serial id PK
+    PlatformPlayerFriend {
         int player_id FK
         int friend_friend_id FK
     }
-    Ghost {
-        serial id PK
-        int car_id FK
-        int track_id FK
-        UUID ghost_storage_id "ID the ghost is stored under"
+    PlatformSteamPlayer {
+        text platform_player_id PK
+        text display_name
+	    int player_id FK
     }
-    RaceDetail {
-        serial id PK
-        decimal time_elapsed
-        decimal score
+    PlatformXboxPlayer {
+        text platform_player_id PK
+        text display_name
+	    int player_id FK
+    }
+    PlatformPlaystationPlayer {
+        text platform_player_id PK
+        text display_name
+	    int player_id FK
+    }
+    PlatformSwitchPlayer {
+        text platform_player_id PK
+        text display_name
+	    int player_id FK
+    }
+    PlatformEpicPlayer {
+        text platform_player_id PK
+        text display_name
+	    int player_id FK
     }
     Race {
         serial id PK
-        int race_detail_id FK
-        int leaderboard_id FK
         int player_id FK
+        int car_id FK
+        int track_id FK
+        timestamp timestamp_created
+    }
+    RaceDetailTime {
+        int race_id FK
+        decimal time_elapsed
+    }
+    Ghost {
+        serial id PK
+        int race_id FK
+        UUID ghost_storage_id "ID the ghost is stored under"
     }
     Car {
         serial id PK
@@ -128,18 +141,5 @@ erDiagram
     Track {
         serial id PK
         text name
-    }
-    Leaderboard {
-        serial id PK
-        int challenge_id FK
-        text name
-        int type
-    }
-    Challenge {
-        serial id PK
-        text name
-        int type
-        timestamp start_date
-        timestamp end_date
     }
 ```
