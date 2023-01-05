@@ -74,71 +74,71 @@ erDiagram
 ``` mermaid
 %%{init: {'theme':'neutral'}}%%
 erDiagram
-    PlatformSteamPlayer ||--|| Player : ""
-    PlatformXboxPlayer ||--|| Player : ""
-    PlatformPlaystationPlayer ||--|| Player : ""
-    PlatformSwitchPlayer ||--|| Player : ""
-    PlatformEpicPlayer ||--|| Player : ""
-    PlatformPlayerFriend ||--|{ Player : ""
-    Player ||--|{ Race : ""
-    Ghost ||--|| Race : ""
-    Race ||--|| RaceDetailTime : ""
-    Race }|--|| Car : ""
-    Race }|--|| Track : ""
+    platform_steam_player ||--|| player : ""
+    platform_xbox_player ||--|| player : ""
+    platform_playstation_player ||--|| player : ""
+    platform_switch_player ||--|| player : ""
+    platform_epic_player ||--|| player : ""
+    platform_player_friend ||--|{ player : ""
+    player ||--|{ race : ""
+    ghost ||--|| race : ""
+    race ||--|| race_detail_time : ""
+    race }|--|| car : ""
+    race }|--|| track : ""
 
-    Player {
+    player {
         serial id PK
     }
-    PlatformPlayerFriend {
+    platform_player_friend {
         int player_id FK
         int friend_friend_id FK
     }
-    PlatformSteamPlayer {
+    platform_steam_player {
         text platform_player_id PK
         text display_name
 	    int player_id FK
     }
-    PlatformXboxPlayer {
+    platform_xbox_player {
         text platform_player_id PK
         text display_name
 	    int player_id FK
     }
-    PlatformPlaystationPlayer {
+    platform_playstation_player {
         text platform_player_id PK
         text display_name
 	    int player_id FK
     }
-    PlatformSwitchPlayer {
+    platform_switch_player {
         text platform_player_id PK
         text display_name
 	    int player_id FK
     }
-    PlatformEpicPlayer {
+    platform_epic_player {
         text platform_player_id PK
         text display_name
 	    int player_id FK
     }
-    Race {
+    race {
         serial id PK
         int player_id FK
         int car_id FK
         int track_id FK
         timestamp timestamp_created
     }
-    RaceDetailTime {
+    race_detail_time {
         int race_id FK
         decimal time_elapsed
     }
-    Ghost {
+    ghost {
         serial id PK
         int race_id FK
-        UUID ghost_storage_id "ID the ghost is stored under"
+        text json
     }
-    Car {
+    car {
         serial id PK
         text name
     }
-    Track {
+    track {
         serial id PK
         text name
     }
