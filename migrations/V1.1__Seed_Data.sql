@@ -19,6 +19,11 @@ values
     (default),
     (default);
 
+insert into platform_player_friend
+(player_id, player_friend_id)
+values
+    (1, 4);
+
 insert into platform_steam_player
     (platform_player_id, display_name, player_id)
 values
