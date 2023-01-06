@@ -88,10 +88,11 @@ erDiagram
 
     player {
         serial id PK
+	timestamp timestamp_created
     }
     platform_player_friend {
         int player_id FK
-        int friend_friend_id FK
+        int player_friend_id FK
     }
     platform_steam_player {
         text platform_player_id PK
@@ -123,7 +124,7 @@ erDiagram
         int player_id FK
         int car_id FK
         int track_id FK
-        timestamp timestamp_created
+        timestamp timestamp_finished
     }
     race_detail_time {
         int race_id FK
@@ -132,7 +133,7 @@ erDiagram
     ghost {
         serial id PK
         int race_id FK
-        text json
+        text binary_data
     }
     car {
         serial id PK
