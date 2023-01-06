@@ -91,7 +91,7 @@ erDiagram
     }
     platform_player_friend {
         int player_id FK
-        int friend_friend_id FK
+        int player_friend_id FK
     }
     platform_steam_player {
         text platform_player_id PK
