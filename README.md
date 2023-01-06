@@ -88,6 +88,7 @@ erDiagram
 
     player {
         serial id PK
+	timestamp timestamp_created
     }
     platform_player_friend {
         int player_id FK
@@ -123,7 +124,7 @@ erDiagram
         int player_id FK
         int car_id FK
         int track_id FK
-        timestamp timestamp_created
+        timestamp timestamp_finished
     }
     race_detail_time {
         int race_id FK
