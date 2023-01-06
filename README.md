@@ -132,7 +132,7 @@ erDiagram
     ghost {
         serial id PK
         int race_id FK
-        text json
+        text binary_data
     }
     car {
         serial id PK
