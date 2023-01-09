@@ -1,86 +1,199 @@
-INSERT INTO car
+do language plpgsql $$
+
+declare player_1_id integer;
+declare player_2_id integer;
+declare player_3_id integer;
+declare player_4_id integer;
+
+declare races_id integer;
+
+begin
+
+insert into car
     (id, name)
 values
     (1, 'car1'),
     (2, 'car2'),
     (3, 'car3');
 
-INSERT INTO track
+insert into track
     (id, name)
 values
     (1, 'track1'),
     (2, 'track2'),
     (3, 'track3');
 
-INSERT INTO player
+-- player 1
+insert into player
 values
-    (default),
-    (default),
-    (default),
-    (default);
-
-insert into platform_player_friend
-(player_id, player_friend_id)
-values
-    (1, 4);
+    (default) returning id into player_1_id;
 
 insert into platform_steam_player
     (platform_player_id, display_name, player_id)
 values
-    ('steam_123', 'mr. player', 1),
-    ('steam_456', 'racer', 4);
+    ('steam_123', 'mr. player', player_1_id);
+
+-- player 2
+insert into player
+values
+    (default) returning id into player_2_id;
 
 insert into platform_xbox_player
     (platform_player_id, display_name, player_id)
 values
-    ('xb_7fg8d', 'IAmNumberOne', 1);
+    ('xb_7fg8d', 'iamnumberone', player_2_id);
+
+-- player 3
+insert into player
+values
+    (default) returning id into player_3_id;
 
 insert into platform_playstation_player
     (platform_player_id, display_name, player_id)
 values
-    ('ps_abc1', 'playstation_king', 1);
+    ('ps_abc1', 'playstation_king', player_3_id);
 
-INSERT INTO race
+-- player 4
+insert into player
+values
+    (default) returning id into player_4_id;
+
+insert into platform_steam_player
+    (platform_player_id, display_name, player_id)
+values
+    ('steam_456', 'racer', player_4_id);
+
+-- friends
+insert into platform_player_friend
+(player_id, player_friend_id)
+values
+    (player_1_id, player_4_id);
+
+-- race 1
+insert into race
 (player_id, track_id, car_id, timestamp_finished)
 values
-    (1, 1, 1, '2023-01-15 13:30:00'),
-    (2, 1, 1, '2023-01-16 13:30:00'),
-    (3, 1, 1, '2023-01-16 14:30:00'),
-    (1, 2, 3, '2023-01-15 13:30:00'),
-    (2, 2, 3, '2023-01-17 13:30:00'),
-    (2, 2, 3, '2023-01-18 13:30:00'),
-    (2, 3, 1, '2023-01-17 13:30:00'),
-    (3, 3, 1, '2023-01-17 13:31:00'),
-    (1, 1, 1, '2023-01-17 13:30:00');
-
-INSERT INTO race_detail_time
+    (player_1_id, 1, 1, '2023-01-15 13:30:00') returning id into races_id;
+insert into race_detail_time
 (race_id, time_elapsed)
 values
-    (1, 60),
-    (2, 70),
-    (3, 65),
-    (4, 200),
-    (5, 210),
-    (6, 195),
-    (7, 120),
-    (8, 120),
-    (9, 63);
-
+    (races_id, 60);
 insert into ghost
 (race_id, binary_data)
 values
-    (1, ''),
-    (2, ''),
-    (3, ''),
-    (4, ''),
-    (5, ''),
-    (6, ''),
-    (7, ''),
-    (8, ''),
-    (9, '');
+    (races_id, '');
 
---select setval(pg_get_serial_sequence('track', 'id'), max(id))
---from track;
+-- race 2
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_2_id, 1, 1, '2023-01-16 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 70);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
 
---select nextval(pg_get_serial_sequence('player', 'id'))
---select currval(pg_get_serial_sequence('player', 'id'))
+-- race 3
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_3_id, 1, 1, '2023-01-16 14:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 65);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 4
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_1_id, 2, 3, '2023-01-15 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 200);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 5
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_2_id, 2, 3, '2023-01-17 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 210);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 6
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_2_id, 2, 3, '2023-01-18 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 195);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 7
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_2_id, 3, 1, '2023-01-17 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 120);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 8
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_3_id, 3, 1, '2023-01-17 13:31:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 120);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+-- race 9
+insert into race
+(player_id, track_id, car_id, timestamp_finished)
+values
+    (player_1_id, 1, 1, '2023-01-17 13:30:00') returning id into races_id;
+insert into race_detail_time
+(race_id, time_elapsed)
+values
+    (races_id, 63);
+insert into ghost
+(race_id, binary_data)
+values
+    (races_id, '');
+
+end;
+$$;
