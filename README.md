@@ -147,15 +147,15 @@ erDiagram
 
 ## API Specification
 
-### Races
-<details><summary>GET /races/{platform}</summary>
+### Race
+<details><summary>GET /platform/{platform_id}/races</summary>
 <p>
 
 Parameters:
 - track={track_id}
 - car={car_id}
 	
-Return a list of the races for the a platform (order by time_elapsed) given an optional track_id or car_id
+Return a list of the races for the a platform (order by time_elapsed) given a car_id and track_id.
 
 Response `200 OK`
 
@@ -183,12 +183,10 @@ Response `200 OK`
 </p>
 </details>
 
----
-
-<details><summary>POST /races/{platform}</summary>
+<details><summary>POST /platform/{platform_id}/races</summary>
 <p>
 	
-Create a new race with the following attributes
+Create a new race with the following attributes.
 
 Request
 ```json
@@ -205,3 +203,30 @@ Response `201 Created`
 
 </p>
 </details>
+
+---
+
+### Player
+
+GET /platform/{platform}/player/{player_id}
+
+POST /platform/{platform}/player/{player_id}
+
+---
+
+### Ghost
+
+GET /platform/{platform}/ghost/{ghost_id}
+
+POST /platform/{platform}/ghost/{ghost_id}
+
+---
+
+### Friend
+
+
+GET /platform/{platform}/friends/{player_id}
+
+POST /platform/{platform}/friends/{player_id}
+
+DELETE /platform/{platform}/friends/{player_id}
