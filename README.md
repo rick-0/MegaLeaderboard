@@ -157,7 +157,7 @@ Parameters:
 	
 Return a list of the races for the a platform (order by time_elapsed) given an optional track_id or car_id
 
-Response `200`
+Response `200 OK`
 
 ```json
 [
@@ -183,6 +183,8 @@ Response `200`
 </p>
 </details>
 
+---
+
 <details><summary>POST /races/{platform}</summary>
 <p>
 	
@@ -199,7 +201,7 @@ Request
 }
 ```
 	
-Response `200`
+Response `201 Created`
 
 </p>
 </details>
