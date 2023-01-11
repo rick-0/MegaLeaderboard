@@ -157,9 +157,9 @@ Parameters:
 	
 Return a list of the races for the a platform (order by time_elapsed) given an optional track_id or car_id
 
-Response 200
+Response `200`
 
-```
+```json
 [
   {
     "id": 1,
@@ -189,7 +189,7 @@ Response 200
 Create a new race with the following attributes
 
 Request
-```
+```json
 {
   "player_id": "1",
   "track_id": "1",
@@ -199,7 +199,7 @@ Request
 }
 ```
 	
-Response 200
+Response `200`
 
 </p>
 </details>
