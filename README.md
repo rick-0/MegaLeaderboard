@@ -148,10 +148,14 @@ erDiagram
 ## API Specification
 
 ### Races
-<details><summary>GET /steam/races/{track_id}/{car_id}</summary>
+<details><summary>GET /races/{platform}</summary>
 <p>
 
-Return a list of the races for the steam platform given a track and car
+Parameters:
+- track={track_id}
+- car={car_id}
+	
+Return a list of the races for the a platform (order by time_elapsed) given an optional track_id or car_id
 
 Response 200
 
@@ -159,7 +163,7 @@ Response 200
 [
   {
     "id": 1,
-    "time_elapsed": 60,
+    "time_elapsed": 60.5,
     "track": {
     	"id": "1",
 	"name": "track1"
@@ -172,12 +176,30 @@ Response 200
     	"id": "1",
 	"display_name": "Player123"
     }
-  },
-  {
-    "id": 2
   }
 ]
 ```
+
+</p>
+</details>
+
+<details><summary>POST /races/{platform}</summary>
+<p>
+	
+Create a new race with the following attributes
+
+Request
+```
+{
+  "player_id": "1",
+  "track_id": "1",
+  "car_id": "1",
+  "elapsed_time": 60.5,
+  "ghost_data": ""
+}
+```
+	
+Response 200
 
 </p>
 </details>
