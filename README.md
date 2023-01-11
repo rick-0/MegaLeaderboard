@@ -144,3 +144,40 @@ erDiagram
         text name
     }
 ```
+
+## API Specification
+
+### Races
+<details><summary>GET /steam/races/{track_id}/{car_id}</summary>
+<p>
+
+Return a list of the races for the steam platform given a track and car
+
+Response 200
+
+```
+[
+  {
+    "id": 1,
+    "time_elapsed": 60,
+    "track": {
+    	"id": "1",
+	"name": "track1"
+    },
+    "car": {
+    	"id": "1",
+	"name": "car1"
+    },
+    "player": {
+    	"id": "1",
+	"display_name": "Player123"
+    }
+  },
+  {
+    "id": 2
+  }
+]
+```
+
+</p>
+</details>
