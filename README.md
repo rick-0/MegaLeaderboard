@@ -147,7 +147,7 @@ erDiagram
 
 ## API Specification
 
-### Race
+### Races
 <details><summary>GET /platform/{platform_id}/races</summary>
 <p>
 
@@ -174,6 +174,7 @@ Response `200 OK`
     },
     "player": {
     	"id": "1",
+	"platform_player_id": ABCDXYZ123,
 	"display_name": "Player123"
     }
   }
@@ -206,11 +207,48 @@ Response `201 Created`
 
 ---
 
-### Player
+### Players
 
-GET /platform/{platform}/player/{player_id}
+<details><summary>GET /platform/{platform}/players</summary>
+<p>
 
-POST /platform/{platform}/player/{player_id}
+Parameters:
+- id=1,2,3
+	
+Get the details of a player specified by their ids
+	
+Response `200 OK`
+	
+```json
+[
+  {
+    "id": 1,
+    "platform_player_id": ABCDXYZ123,
+    "display_name": "Player123"
+  }
+]
+```
+	
+</p>
+</details>
+
+<details><summary>POST /platform/{platform}/players</summary>
+<p>
+	
+Create a new player with the following attributes.
+
+Request
+```json
+{
+  "platform_player_id": ABCDXYZ123,
+  "display_name": "Player123"
+}
+```
+
+Response `201 Created`
+
+</p>
+</details>
 
 ---
 
