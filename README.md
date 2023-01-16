@@ -210,7 +210,7 @@ Response `201 Created`
 
 ### Players
 
-<details><summary>GET /platforms/{platform}/players/{player_id}</summary>
+<details><summary>GET /platforms/{platform}/players/{player_id}?type=[system|platform]</summary>
 <p>
 	
 Get the details of a player specified by their id
