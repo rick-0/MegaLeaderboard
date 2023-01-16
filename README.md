@@ -148,7 +148,7 @@ erDiagram
 ## API Specification
 
 ### Races
-<details><summary>GET /platforms/{platform_id}/races</summary>
+<details><summary>GET /platforms/{platform}/races</summary>
 <p>
 
 Parameters:
@@ -185,7 +185,7 @@ Response `200 OK`
 </p>
 </details>
 
-<details><summary>POST /platforms/{platform_id}/races</summary>
+<details><summary>POST /platforms/{platform}/races</summary>
 <p>
 	
 Create a new race with the following attributes.
@@ -302,10 +302,12 @@ Response `200 OK`
 ```json
 [
   {
-    "player_id": 1
+    "player_id": 1,
+	"display_name": "racer 1"
   },
   {
-    "player_id": 2
+    "player_id": 2,
+	"display_name": "racer 2"
   }
 ]
 ```
@@ -322,8 +324,10 @@ Request
 ```json
 [
   {
-    "race_id": 1,
-    "binary_data": "123456789"
+    "player_friend_id": 2
+  },
+  {
+    "player_friend_id": 3
   }
 ]
 ```
