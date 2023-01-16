@@ -302,12 +302,14 @@ Response `200 OK`
 ```json
 [
   {
-    "player_id": 1,
-	"display_name": "racer 1"
+    "id": 1,
+    "platform_player_id": ABCDXYZ123,
+    "display_name": "Player123"
   },
-  {
-    "player_id": 2,
-	"display_name": "racer 2"
+    {
+    "id": 2,
+    "platform_player_id": ABCDXYZ678,
+    "display_name": "Player678"
   }
 ]
 ```
