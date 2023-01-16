@@ -318,7 +318,7 @@ Response `200 OK`
 <details><summary>POST /platforms/{platform}/friends/{player_id}</summary>
 <p>
 	
-Create a new ghost with the following attributes.
+Associate a player with other players as friends specified by player_id
 
 Request
 ```json
@@ -337,4 +337,24 @@ Response `201 Created`
 </p>
 </details>
 
-DELETE /platforms/{platform}/friends/{player_id}
+<details><summary>DELETE /platforms/{platform}/friends/{player_id}</summary>
+<p>
+	
+Delete players associated with a player as friends specified by player_id
+
+Request
+```json
+[
+  {
+    "player_friend_id": 2
+  },
+  {
+    "player_friend_id": 3
+  }
+]
+```
+
+Response `201 Created`
+
+</p>
+</details>
