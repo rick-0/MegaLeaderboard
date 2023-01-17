@@ -291,12 +291,10 @@ Create a new ghost with the following attributes.
 
 Request
 ```json
-[
-  {
-    "race_id": 1,
-    "binary_data": "123456789"
-  }
-]
+{
+  "race_id": 1,
+  "binary_data": "123456789"
+}
 ```
 
 Response `201 Created`
