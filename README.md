@@ -91,7 +91,8 @@ erDiagram
 	timestamp timestamp_created
     }
     platform_player_friend {
-        int player_id FK
+        int id PK
+	int player_id FK
         int player_friend_id FK
     }
     platform_steam_player {
