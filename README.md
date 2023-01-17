@@ -91,7 +91,8 @@ erDiagram
 	timestamp timestamp_created
     }
     platform_player_friend {
-        int player_id FK
+        int id PK
+	int player_id FK
         int player_friend_id FK
     }
     platform_steam_player {
@@ -144,3 +145,233 @@ erDiagram
         text name
     }
 ```
+
+## API Specification
+
+### Races
+<details><summary>GET /platforms/{platform}/races</summary>
+<p>
+
+Parameters:
+- track={track_id}
+- car={car_id}
+	
+Return a list of the races for the a platform (order by time_elapsed) given a car_id and track_id
+
+Response `200 OK`
+
+```json
+[
+  {
+    "id": 1,
+    "time_elapsed": 60.5,
+    "ghost_id": 1,
+    "track": {
+      "id": "1",
+	  "name": "track1"
+    },
+    "car": {
+      "id": "1",
+	  "name": "car1"
+    },
+    "player": {
+    	"id": "1",
+	  "platform_player_id": ABCDXYZ123,
+	  "display_name": "Player123"
+    }
+  }
+]
+```
+
+</p>
+</details>
+
+<details><summary>POST /platforms/{platform}/races</summary>
+<p>
+	
+Create a new race with the following attributes.
+
+Request
+```json
+{
+  "player_id": "1",
+  "track_id": "1",
+  "car_id": "1",
+  "elapsed_time": 60.5
+}
+```
+	
+Response `201 Created`
+
+</p>
+</details>
+
+---
+
+### Players
+
+<details><summary>GET /players/{player_id}</summary>
+<p>
+	
+Get the details of a player specified by their id
+	
+Response `200 OK`
+	
+```json
+{
+  "id": 1,
+  "timestamp_created": ""
+}
+```
+	
+</p>
+</details>
+
+<details><summary>GET /platforms/{platform}/players/{platform_player_id}</summary>
+<p>
+	
+Get the details of a player specified by their platform specific id
+	
+Response `200 OK`
+	
+```json
+{
+  "id": 1,
+  "platform_player_id": ABCDXYZ123,
+  "display_name": "Player123"
+}
+```
+	
+</p>
+</details>
+
+<details><summary>POST /platforms/{platform}/players</summary>
+<p>
+	
+Create a new player with the following attributes
+
+Request
+```json
+{
+  "platform_player_id": ABCDXYZ123,
+  "display_name": "Player123"
+}
+```
+
+Response `201 Created`
+
+</p>
+</details>
+
+---
+
+### Ghosts
+
+<details><summary>GET /platforms/{platform}/ghosts/{ghost_id}</summary>
+<p>
+
+Get the details of a ghost by id
+	
+Response `200 OK`
+	
+```json
+{
+  "id": 1,
+  "race_id": 1,
+  "binary_data": "123456789"
+}
+```
+
+</p>
+</details>
+
+<details><summary>POST /platforms/{platform}/ghosts</summary>
+<p>
+	
+Create a new ghost with the following attributes.
+
+Request
+```json
+{
+  "race_id": 1,
+  "binary_data": "123456789"
+}
+```
+
+Response `201 Created`
+
+</p>
+</details>
+
+---
+
+### Friend
+
+<details><summary>GET /platforms/{platform}/friends/{player_id}</summary>
+<p>
+
+Get the friends of a player specified by player_id
+	
+Response `200 OK`
+	
+```json
+[
+  {
+    "id": 1,
+    "platform_player_id": ABCDXYZ123,
+    "display_name": "Player123"
+  },
+    {
+    "id": 2,
+    "platform_player_id": ABCDXYZ678,
+    "display_name": "Player678"
+  }
+]
+```
+
+</p>
+</details>
+
+<details><summary>POST /platforms/{platform}/friends/{player_id}</summary>
+<p>
+	
+Associate a player with other players as friends specified by player_id
+
+Request
+```json
+[
+  {
+    "player_friend_id": 2
+  },
+  {
+    "player_friend_id": 3
+  }
+]
+```
+
+Response `201 Created`
+
+</p>
+</details>
+
+<details><summary>DELETE /platforms/{platform}/friends/{player_id}</summary>
+<p>
+	
+Delete players associated with a player as friends specified by player_id
+
+Request
+```json
+[
+  {
+    "player_friend_id": 2
+  },
+  {
+    "player_friend_id": 3
+  }
+]
+```
+
+Response `201 Created`
+
+</p>
+</details>
