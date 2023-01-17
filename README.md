@@ -164,7 +164,7 @@ Response `200 OK`
   {
     "id": 1,
     "time_elapsed": 60.5,
-	"ghost_id": 1,
+    "ghost_id": 1,
     "track": {
       "id": "1",
 	  "name": "track1"
@@ -196,8 +196,7 @@ Request
   "player_id": "1",
   "track_id": "1",
   "car_id": "1",
-  "elapsed_time": 60.5,
-  "ghost_data": ""
+  "elapsed_time": 60.5
 }
 ```
 	
