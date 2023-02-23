@@ -146,6 +146,62 @@ erDiagram
     }
 ```
 
+```mermaid
+%%{init: {'theme':'neutral'}}%%
+erDiagram
+    platform ||--|{ platform_player : ""
+    player ||--|{ platform_player : ""
+    platform_player_friend ||--|{ player : ""
+    player ||--|{ race : ""
+    ghost ||--|| race : ""
+    race ||--|| race_detail_time : ""
+    race }|--|| car : ""
+    race }|--|| track : ""
+
+    player {
+        serial id PK
+	    timestamp timestamp_created
+    }
+    platform {
+        serial id PK
+        text name
+    }
+    platform_player {
+        serial id PK
+        int platform_id FK
+        int player_id FK
+    }
+    platform_player_friend {
+        int id PK
+	    int player_id FK
+        int player_friend_id FK
+    }
+    race {
+        serial id PK
+        int player_id FK
+        int car_id FK
+        int track_id FK
+        timestamp timestamp_finished
+    }
+    race_detail_time {
+        int race_id FK
+        decimal time_elapsed
+    }
+    ghost {
+        serial id PK
+        int race_id FK
+        text binary_data
+    }
+    car {
+        serial id PK
+        text name
+    }
+    track {
+        serial id PK
+        text name
+    }
+```
+
 ## API Specification
 
 ### Races
